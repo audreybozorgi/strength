@@ -1,0 +1,15 @@
+{
+  "name": "strength",
+  "version": "1.0.0",
+  "description": "This is a function for getting integer number, multiple each number to its neighbourhood and observe the result and repeat this action till the result is less than 2 digits and no neighbourhood remain. ",
+  "main": "strength.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.6.0",
+    "readline": "^1.3.0"
+  }
+}
