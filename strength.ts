@@ -5,47 +5,46 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-function multipleCounter(num, step) {
-    //make number string for implementing neighbourhood algo.
+function stepCounter(num, step = 1) {
+    let splittedChar, arrayOfNumbers, newNum
+
+    // make number string for implementing neighbourhood algorithm.
     num = String(num)
 
-    //split numbers inside string
-    const splittedNumber = num.split('')
-    
-    //create array of numbers in integer format
-    const splittedNumberInInteger = splittedNumber.map(number => +number)
+    // split each character inside string
+    splittedChar = num.split('')
 
-    let newNumber = splittedNumberInInteger.reduce(function(accumulator, current) {
+    // create array of numbers in integer format
+    arrayOfNumbers = splittedChar.map(number => +number)
+
+    // multiply numbers together to find new number
+    newNum = arrayOfNumbers.reduce(function (accumulator, current) {
         return accumulator * current
     })
-    
-    if(newNumber >= 10) {
+
+    // check if new number is less than 10 to return step or recursively calling function self. 
+    if (newNum >= 10) {
         step = step + 1
-        multipleCounter(newNumber, step)
-    }else{
-        console.log('step', step);
+        stepCounter(newNum, step)
+    } else {
+        console.log('steps:', step);
     }
 }
 
 function strength(num) {
-    //check if number is really integer or not
+    // check if number is really integer or not
     const isNumberInteger = Number.isInteger(num)
-    
-    //stop furthur actions is number is not integer
+
+    // stop further actions if number is not integer
     if (!isNumberInteger) {
         console.error('Entered Number is not integer');
         return
     }
 
-    multipleCounter(num, 1)
+    stepCounter(num)
 }
 
 rl.question('Enter your number? ', (number) => {
     strength(Number(number))
     rl.close();
 });
-
-
-
-
-
